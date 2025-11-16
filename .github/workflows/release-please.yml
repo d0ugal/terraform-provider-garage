@@ -12,6 +12,7 @@ permissions:
 jobs:
   release-please:
     runs-on: ubuntu-latest
+    if: ${{ secrets.RELEASE_TOKEN != '' }}
 
     steps:
     - uses: actions/checkout@v5
