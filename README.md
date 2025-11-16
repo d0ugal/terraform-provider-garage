@@ -2,6 +2,8 @@
 
 A lightweight Terraform provider for Garage storage using the v1 admin API.
 
+[![CI](https://github.com/d0ugal/terraform-provider-garage/actions/workflows/ci.yml/badge.svg)](https://github.com/d0ugal/terraform-provider-garage/actions/workflows/ci.yml)
+
 ## Features
 
 - **garage_key**: Create and manage access keys
@@ -22,7 +24,7 @@ terraform {
   required_providers {
     garage = {
       source  = "hoose/garage"
-      version = "0.1.0"
+      version = "0.0.1"
     }
   }
 }
@@ -58,7 +60,13 @@ After building, install to your local Terraform plugins directory:
 make install
 ```
 
-This installs the provider to `~/.terraform.d/plugins/registry.terraform.io/hoose/garage/0.1.0/linux_amd64/`
+This installs the provider to `~/.terraform.d/plugins/registry.terraform.io/hoose/garage/0.0.1/linux_amd64/`
+
+## Requirements
+
+- [Terraform](https://www.terraform.io/downloads.html) >= 1.0
+- [Go](https://golang.org/doc/install) >= 1.24 (to build the provider plugin)
+- Access to a Garage instance with admin API enabled
 
 ## Development
 
@@ -69,8 +77,15 @@ make build
 # Test
 make test
 
+# Lint
+make lint
+
 # Clean
 make clean
 ```
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 

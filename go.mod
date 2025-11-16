@@ -1,4 +1,4 @@
-module github.com/hoose/terraform-provider-garage
+module github.com/d0ugal/terraform-provider-garage
 
 go 1.24.0
 
