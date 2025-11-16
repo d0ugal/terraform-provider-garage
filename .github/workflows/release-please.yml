@@ -12,20 +12,19 @@ permissions:
 jobs:
   release-please:
     runs-on: ubuntu-latest
-    if: ${{ secrets.RELEASE_TOKEN != '' }}
 
     steps:
     - uses: actions/checkout@v5
       with:
         fetch-depth: 0
-        token: ${{ secrets.RELEASE_TOKEN }}
+        token: ${{ secrets.RELEASE_TOKEN || github.token }}
     
     - uses: googleapis/release-please-action@v4
       id: release_please
       with:
         release-type: go
         path: .
-        token: ${{ secrets.RELEASE_TOKEN }}
+        token: ${{ secrets.RELEASE_TOKEN || github.token }}
         default-branch: main
         fork: false
 
