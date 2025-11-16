@@ -1,0 +1,8 @@
+# Changelog
+
+## [0.0.2](https://github.com/d0ugal/terraform-provider-garage/compare/v0.0.1...v0.0.2) (2025-11-16)
+
+
+### Bug Fixes
+
+* test release please ([46ed768](https://github.com/d0ugal/terraform-provider-garage/commit/46ed768bd440ce25f40d4d899fa85101a1e00eda))
