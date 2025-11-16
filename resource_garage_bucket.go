@@ -63,14 +63,26 @@ func resourceGarageBucketCreate(ctx context.Context, d *schema.ResourceData, m i
 	if err != nil {
 		return diag.FromErr(fmt.Errorf("failed to create bucket: %w", err))
 	}
-	defer resp.Body.Close()
+	defer func() {
+		if resp.Body != nil {
+			_ = resp.Body.Close()
+		}
+	}()
 
 	d.SetId(bucket.Id)
-	d.Set("id", bucket.Id)
-	d.Set("bytes", bucket.Bytes)
-	d.Set("objects", bucket.Objects)
+	if err := d.Set("id", bucket.Id); err != nil {
+		return diag.FromErr(err)
+	}
+	if err := d.Set("bytes", bucket.Bytes); err != nil {
+		return diag.FromErr(err)
+	}
+	if err := d.Set("objects", bucket.Objects); err != nil {
+		return diag.FromErr(err)
+	}
 	if len(bucket.GlobalAliases) > 0 {
-		d.Set("global_alias", bucket.GlobalAliases[0])
+		if err := d.Set("global_alias", bucket.GlobalAliases[0]); err != nil {
+			return diag.FromErr(err)
+		}
 	}
 
 	// Set expiration policy if specified
@@ -78,7 +90,9 @@ func resourceGarageBucketCreate(ctx context.Context, d *schema.ResourceData, m i
 		if err := setBucketLifecyclePolicy(ctx, client, bucket.Id, expirationDays.(int)); err != nil {
 			return diag.FromErr(fmt.Errorf("failed to set expiration policy: %w", err))
 		}
-		d.Set("expiration_days", expirationDays.(int))
+		if err := d.Set("expiration_days", expirationDays.(int)); err != nil {
+			return diag.FromErr(err)
+		}
 	}
 
 	return nil
@@ -96,22 +110,38 @@ func resourceGarageBucketRead(ctx context.Context, d *schema.ResourceData, m int
 		}
 		return diag.FromErr(fmt.Errorf("failed to read bucket: %w", err))
 	}
-	defer resp.Body.Close()
+	defer func() {
+		if resp.Body != nil {
+			_ = resp.Body.Close()
+		}
+	}()
 
-	d.Set("id", bucket.Id)
-	d.Set("bytes", bucket.Bytes)
-	d.Set("objects", bucket.Objects)
+	if err := d.Set("id", bucket.Id); err != nil {
+		return diag.FromErr(err)
+	}
+	if err := d.Set("bytes", bucket.Bytes); err != nil {
+		return diag.FromErr(err)
+	}
+	if err := d.Set("objects", bucket.Objects); err != nil {
+		return diag.FromErr(err)
+	}
 	if len(bucket.GlobalAliases) > 0 {
-		d.Set("global_alias", bucket.GlobalAliases[0])
+		if err := d.Set("global_alias", bucket.GlobalAliases[0]); err != nil {
+			return diag.FromErr(err)
+		}
 	}
 
 	// Read expiration policy if it exists
 	expirationDays, err := getBucketLifecyclePolicy(ctx, client, bucket.Id)
 	if err == nil && expirationDays > 0 {
-		d.Set("expiration_days", expirationDays)
+		if err := d.Set("expiration_days", expirationDays); err != nil {
+			return diag.FromErr(err)
+		}
 	} else if d.HasChange("expiration_days") {
 		// If expiration_days was removed, clear it
-		d.Set("expiration_days", 0)
+		if err := d.Set("expiration_days", 0); err != nil {
+			return diag.FromErr(err)
+		}
 	}
 
 	return nil
@@ -174,7 +204,11 @@ func setBucketLifecyclePolicy(ctx context.Context, client *GarageClient, bucketI
 	if err != nil {
 		return fmt.Errorf("failed to get bucket info: %w", err)
 	}
-	defer resp.Body.Close()
+	defer func() {
+		if resp.Body != nil {
+			_ = resp.Body.Close()
+		}
+	}()
 
 	// Get bucket name (alias)
 	bucketName := bucketID
@@ -225,7 +259,11 @@ func setBucketLifecyclePolicy(ctx context.Context, client *GarageClient, bucketI
 	if err != nil {
 		return fmt.Errorf("failed to execute request: %w", err)
 	}
-	defer resp.Body.Close()
+	defer func() {
+		if resp.Body != nil {
+			_ = resp.Body.Close()
+		}
+	}()
 
 	if resp.StatusCode != http.StatusOK && resp.StatusCode != http.StatusNoContent {
 		return fmt.Errorf("unexpected status code: %d", resp.StatusCode)
@@ -241,7 +279,11 @@ func getBucketLifecyclePolicy(ctx context.Context, client *GarageClient, bucketI
 	if err != nil {
 		return 0, fmt.Errorf("failed to get bucket info: %w", err)
 	}
-	defer resp.Body.Close()
+	defer func() {
+		if resp.Body != nil {
+			_ = resp.Body.Close()
+		}
+	}()
 
 	// Get bucket name (alias)
 	bucketName := bucketID
@@ -272,7 +314,11 @@ func getBucketLifecyclePolicy(ctx context.Context, client *GarageClient, bucketI
 	if err != nil {
 		return 0, fmt.Errorf("failed to execute request: %w", err)
 	}
-	defer resp.Body.Close()
+	defer func() {
+		if resp.Body != nil {
+			_ = resp.Body.Close()
+		}
+	}()
 
 	if resp.StatusCode == http.StatusNotFound {
 		return 0, nil // No lifecycle policy set
@@ -303,7 +349,11 @@ func deleteBucketLifecyclePolicy(ctx context.Context, client *GarageClient, buck
 	if err != nil {
 		return fmt.Errorf("failed to get bucket info: %w", err)
 	}
-	defer resp.Body.Close()
+	defer func() {
+		if resp.Body != nil {
+			_ = resp.Body.Close()
+		}
+	}()
 
 	// Get bucket name (alias)
 	bucketName := bucketID
@@ -334,7 +384,11 @@ func deleteBucketLifecyclePolicy(ctx context.Context, client *GarageClient, buck
 	if err != nil {
 		return fmt.Errorf("failed to execute request: %w", err)
 	}
-	defer resp.Body.Close()
+	defer func() {
+		if resp.Body != nil {
+			_ = resp.Body.Close()
+		}
+	}()
 
 	if resp.StatusCode != http.StatusOK && resp.StatusCode != http.StatusNoContent && resp.StatusCode != http.StatusNotFound {
 		return fmt.Errorf("unexpected status code: %d", resp.StatusCode)
