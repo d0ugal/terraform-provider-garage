@@ -48,14 +48,22 @@ func resourceGarageKeyCreate(ctx context.Context, d *schema.ResourceData, m inte
 	if err != nil {
 		return diag.FromErr(fmt.Errorf("failed to create key: %w", err))
 	}
-	defer resp.Body.Close()
+	defer func() {
+		if resp.Body != nil {
+			_ = resp.Body.Close()
+		}
+	}()
 
 	d.SetId(key.AccessKeyId)
-	d.Set("access_key_id", key.AccessKeyId)
+	if err := d.Set("access_key_id", key.AccessKeyId); err != nil {
+		return diag.FromErr(err)
+	}
 	if key.SecretAccessKey.IsSet() {
 		secret := key.SecretAccessKey.Get()
 		if secret != nil {
-			d.Set("secret_access_key", *secret)
+			if err := d.Set("secret_access_key", *secret); err != nil {
+				return diag.FromErr(err)
+			}
 		}
 	}
 
@@ -74,10 +82,18 @@ func resourceGarageKeyRead(ctx context.Context, d *schema.ResourceData, m interf
 		}
 		return diag.FromErr(fmt.Errorf("failed to read key: %w", err))
 	}
-	defer resp.Body.Close()
+	defer func() {
+		if resp.Body != nil {
+			_ = resp.Body.Close()
+		}
+	}()
 
-	d.Set("access_key_id", key.AccessKeyId)
-	d.Set("name", key.Name)
+	if err := d.Set("access_key_id", key.AccessKeyId); err != nil {
+		return diag.FromErr(err)
+	}
+	if err := d.Set("name", key.Name); err != nil {
+		return diag.FromErr(err)
+	}
 	// Note: secret_access_key is not available on read, only on create
 
 	return nil

@@ -67,7 +67,11 @@ func resourceGarageBucketKeyCreate(ctx context.Context, d *schema.ResourceData, 
 	if err != nil {
 		return diag.FromErr(fmt.Errorf("failed to update bucket key permissions: %w", err))
 	}
-	defer resp.Body.Close()
+	defer func() {
+		if resp.Body != nil {
+			_ = resp.Body.Close()
+		}
+	}()
 
 	d.SetId(fmt.Sprintf("%s/%s", bucketID, keyID))
 
@@ -88,19 +92,29 @@ func resourceGarageBucketKeyRead(ctx context.Context, d *schema.ResourceData, m 
 		}
 		return diag.FromErr(fmt.Errorf("failed to read key: %w", err))
 	}
-	defer resp.Body.Close()
+	defer func() {
+		if resp.Body != nil {
+			_ = resp.Body.Close()
+		}
+	}()
 
 	// Find this bucket in the key's bucket list
 	for _, bucket := range key.Buckets {
 		if bucket.Id == bucketID {
 			if bucket.Permissions.Read != nil {
-				d.Set("read", *bucket.Permissions.Read)
+				if err := d.Set("read", *bucket.Permissions.Read); err != nil {
+					return diag.FromErr(err)
+				}
 			}
 			if bucket.Permissions.Write != nil {
-				d.Set("write", *bucket.Permissions.Write)
+				if err := d.Set("write", *bucket.Permissions.Write); err != nil {
+					return diag.FromErr(err)
+				}
 			}
 			if bucket.Permissions.Owner != nil {
-				d.Set("owner", *bucket.Permissions.Owner)
+				if err := d.Set("owner", *bucket.Permissions.Owner); err != nil {
+					return diag.FromErr(err)
+				}
 			}
 			return nil
 		}
@@ -130,7 +144,11 @@ func resourceGarageBucketKeyUpdate(ctx context.Context, d *schema.ResourceData, 
 	if err != nil {
 		return diag.FromErr(fmt.Errorf("failed to update bucket key permissions: %w", err))
 	}
-	defer resp.Body.Close()
+	defer func() {
+		if resp.Body != nil {
+			_ = resp.Body.Close()
+		}
+	}()
 
 	return resourceGarageBucketKeyRead(ctx, d, m)
 }
@@ -152,7 +170,11 @@ func resourceGarageBucketKeyDelete(ctx context.Context, d *schema.ResourceData, 
 	if err != nil {
 		return diag.FromErr(fmt.Errorf("failed to remove bucket key permissions: %w", err))
 	}
-	defer resp.Body.Close()
+	defer func() {
+		if resp.Body != nil {
+			_ = resp.Body.Close()
+		}
+	}()
 
 	d.SetId("")
 	return nil
