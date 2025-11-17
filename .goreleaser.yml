@@ -42,14 +42,11 @@ checksum:
 
 signs:
   - artifacts: checksum
-    passphrase: "{{ .Env.GPG_PASSPHRASE }}"
+    cmd: bash
     args:
-      - "--batch"
-      - "--pinentry-mode"
-      - "loopback"
-      - "--armor"
-      - "--detach-sign"
-      - "$artifact"
+      - "-c"
+      - |
+        gpg --batch --pinentry-mode loopback --passphrase "$GPG_PASSPHRASE" --armor --detach-sign --output "${signature}" "${artifact}"
 
 release:
   mode: replace
