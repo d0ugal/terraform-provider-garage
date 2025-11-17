@@ -38,6 +38,8 @@ jobs:
           echo "pinentry-mode loopback" >> ~/.gnupg/gpg.conf
           echo "allow-loopback-pinentry" >> ~/.gnupg/gpg-agent.conf
           gpg-connect-agent reloadagent /bye || true
+          # Test signing to ensure passphrase is cached in the agent
+          echo "test" | gpg --clearsign --batch --pinentry-mode loopback --passphrase "${{ secrets.GPG_PASSPHRASE }}" --default-key ${{ steps.import_gpg.outputs.fingerprint }} > /dev/null 2>&1 || true
 
       - name: Run GoReleaser
         uses: goreleaser/goreleaser-action@v6
@@ -48,5 +50,6 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.RELEASE_TOKEN }}
           GPG_FINGERPRINT: ${{ steps.import_gpg.outputs.fingerprint }}
+          GPG_PASSPHRASE: ${{ secrets.GPG_PASSPHRASE }}
 
 

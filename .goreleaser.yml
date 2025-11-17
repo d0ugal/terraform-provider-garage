@@ -42,6 +42,7 @@ checksum:
 
 signs:
   - artifacts: checksum
+    passphrase: "{{ .Env.GPG_PASSPHRASE }}"
     args:
       - "--batch"
       - "--pinentry-mode"
