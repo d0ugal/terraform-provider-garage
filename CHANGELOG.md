@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.0.9](https://github.com/d0ugal/terraform-provider-garage/compare/v0.0.8...v0.0.9) (2025-11-17)
+
+
+### Bug Fixes
+
+* test release ([237a153](https://github.com/d0ugal/terraform-provider-garage/commit/237a15373b880a4ab8a513ec460c16cffab35a88))
+
 ## [0.0.8](https://github.com/d0ugal/terraform-provider-garage/compare/v0.0.7...v0.0.8) (2025-11-17)
 
 
