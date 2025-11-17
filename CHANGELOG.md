@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.0.5](https://github.com/d0ugal/terraform-provider-garage/compare/v0.0.4...v0.0.5) (2025-11-17)
+
+
+### Bug Fixes
+
+* configure GPG for non-interactive signing in CI ([4ba876f](https://github.com/d0ugal/terraform-provider-garage/commit/4ba876f8fa423d42a352a31e6aa4b7775e4a9690))
+
 ## [0.0.4](https://github.com/d0ugal/terraform-provider-garage/compare/v0.0.3...v0.0.4) (2025-11-17)
 
 
