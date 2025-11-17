@@ -42,11 +42,11 @@ checksum:
 
 signs:
   - artifacts: checksum
-    cmd: bash
     args:
-      - "-c"
-      - |
-        gpg --batch --pinentry-mode loopback --passphrase "$GPG_PASSPHRASE" --armor --detach-sign --output "${signature}" "${artifact}"
+      - "--batch"
+      - "--armor"
+      - "--detach-sign"
+      - "$artifact"
 
 release:
   mode: replace
