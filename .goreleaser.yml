@@ -44,6 +44,8 @@ signs:
   - artifacts: checksum
     args:
       - "--batch"
+      - "--pinentry-mode"
+      - "loopback"
       - "--armor"
       - "--detach-sign"
       - "$artifact"
