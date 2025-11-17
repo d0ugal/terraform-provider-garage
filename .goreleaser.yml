@@ -1,0 +1,70 @@
+project_name: terraform-provider-garage
+
+builds:
+  - id: provider
+    main: .
+    binary: terraform-provider-garage_{{.Version}}
+    goos:
+      - freebsd
+      - windows
+      - linux
+      - darwin
+    goarch:
+      - amd64
+      - arm
+      - arm64
+    ignore:
+      - goos: windows
+        goarch: arm
+      - goos: windows
+        goarch: arm64
+    env:
+      - CGO_ENABLED=0
+    flags:
+      - -trimpath
+    ldflags:
+      - -s -w
+
+archives:
+  - id: default
+    builds:
+      - provider
+    format: zip
+    name_template: "{{ .ProjectName }}_{{ .Version }}_{{ .Os }}_{{ .Arch }}"
+    files:
+      - terraform-registry-manifest.json
+
+checksum:
+  name_template: "{{ .ProjectName }}_{{ .Version }}_SHA256SUMS"
+  algorithm: sha256
+
+signs:
+  - artifacts: checksum
+    args:
+      - "--batch"
+      - "--armor"
+      - "--detach-sign"
+      - "$signature"
+    signature: "${artifact}.sig"
+
+release:
+  mode: replace
+  name_template: "v{{ .Version }}"
+  header: |
+    ## Terraform Provider Garage {{ .Version }}
+    
+    See [CHANGELOG.md](CHANGELOG.md) for details.
+  footer: |
+    ## Installation
+    
+    ```hcl
+    terraform {
+      required_providers {
+        garage = {
+          source  = "d0ugal/garage"
+          version = "{{ .Version }}"
+        }
+      }
+    }
+    ```
+
