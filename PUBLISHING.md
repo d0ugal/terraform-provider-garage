@@ -91,3 +91,4 @@ terraform init
   - `terraform-registry-manifest.json` file
 - **Provider not found**: Wait a few minutes after publishing - the registry needs time to index
 
+

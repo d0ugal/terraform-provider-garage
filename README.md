@@ -23,7 +23,7 @@ make install
 terraform {
   required_providers {
     garage = {
-      source  = "hoose/garage"
+      source  = "d0ugal/garage"
       version = "0.0.1"
     }
   }
@@ -60,7 +60,7 @@ After building, install to your local Terraform plugins directory:
 make install
 ```
 
-This installs the provider to `~/.terraform.d/plugins/registry.terraform.io/hoose/garage/0.0.1/linux_amd64/`
+This installs the provider to `~/.terraform.d/plugins/registry.terraform.io/d0ugal/garage/0.0.1/linux_amd64/`
 
 ## Requirements
 

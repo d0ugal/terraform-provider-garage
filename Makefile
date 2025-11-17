@@ -18,8 +18,8 @@ build:
 	go build -o terraform-provider-garage
 
 install: build
-	mkdir -p ~/.terraform.d/plugins/registry.terraform.io/hoose/garage/0.0.1/linux_amd64
-	cp terraform-provider-garage ~/.terraform.d/plugins/registry.terraform.io/hoose/garage/0.0.1/linux_amd64/
+	mkdir -p ~/.terraform.d/plugins/registry.terraform.io/d0ugal/garage/0.0.1/linux_amd64
+	cp terraform-provider-garage ~/.terraform.d/plugins/registry.terraform.io/d0ugal/garage/0.0.1/linux_amd64/
 
 test:
 	go test -v -race -coverprofile=coverage.txt -covermode=atomic ./... || true
