@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.0.7](https://github.com/d0ugal/terraform-provider-garage/compare/v0.0.6...v0.0.7) (2025-11-17)
+
+
+### Bug Fixes
+
+* use bash wrapper script for GPG signing with passphrase ([6c2cbc4](https://github.com/d0ugal/terraform-provider-garage/commit/6c2cbc4bed3154c27a2194be7ab0f4c5c526e00f))
+
 ## [0.0.6](https://github.com/d0ugal/terraform-provider-garage/compare/v0.0.5...v0.0.6) (2025-11-17)
 
 
