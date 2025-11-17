@@ -1,3 +1,5 @@
+version: 2
+
 project_name: terraform-provider-garage
 
 builds:
@@ -44,8 +46,7 @@ signs:
       - "--batch"
       - "--armor"
       - "--detach-sign"
-      - "$signature"
-    signature: "${artifact}.sig"
+      - "$artifact"
 
 release:
   mode: replace
