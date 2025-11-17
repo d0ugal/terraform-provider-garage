@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.0.4](https://github.com/d0ugal/terraform-provider-garage/compare/v0.0.3...v0.0.4) (2025-11-17)
+
+
+### Bug Fixes
+
+* update GoReleaser config to version 2 and fix GPG signing ([f7dc6f7](https://github.com/d0ugal/terraform-provider-garage/commit/f7dc6f70105e036bbd76566447f9fb85e0f5ba20))
+
 ## [0.0.3](https://github.com/d0ugal/terraform-provider-garage/compare/v0.0.2...v0.0.3) (2025-11-17)
 
 
