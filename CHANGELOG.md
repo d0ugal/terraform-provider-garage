@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.0.14](https://github.com/d0ugal/terraform-provider-garage/compare/v0.0.13...v0.0.14) (2025-11-20)
+
+
+### Bug Fixes
+
+* add --pinentry-mode loopback and GPG_TTY for GPG signing in CI ([f79a23d](https://github.com/d0ugal/terraform-provider-garage/commit/f79a23d8c02b799de7d08e4b22530d1d4ade9cc2))
+
 ## [0.0.13](https://github.com/d0ugal/terraform-provider-garage/compare/v0.0.12...v0.0.13) (2025-11-20)
 
 
