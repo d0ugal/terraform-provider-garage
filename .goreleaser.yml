@@ -58,11 +58,11 @@ release:
   name_template: "v{{ .Version }}"
   header: |
     ## Terraform Provider Garage {{ .Version }}
-    
+
     See [CHANGELOG.md](CHANGELOG.md) for details.
   footer: |
     ## Installation
-    
+
     ```hcl
     terraform {
       required_providers {
@@ -73,5 +73,3 @@ release:
       }
     }
     ```
-
-
