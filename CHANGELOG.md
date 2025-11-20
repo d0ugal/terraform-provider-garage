@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.0.10](https://github.com/d0ugal/terraform-provider-garage/compare/v0.0.9...v0.0.10) (2025-11-20)
+
+
+### Bug Fixes
+
+* resolve YAML linting issues ([06846fc](https://github.com/d0ugal/terraform-provider-garage/commit/06846fc86ac8ec915b7b3acc384f5b5919b6b962))
+* resolve YAML linting issues ([7cf1417](https://github.com/d0ugal/terraform-provider-garage/commit/7cf1417fa8d775aa26bc8301e3b9f361136c40bd))
+
 ## [0.0.9](https://github.com/d0ugal/terraform-provider-garage/compare/v0.0.8...v0.0.9) (2025-11-17)
 
 
