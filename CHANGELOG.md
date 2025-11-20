@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.0.16](https://github.com/d0ugal/terraform-provider-garage/compare/v0.0.15...v0.0.16) (2025-11-20)
+
+
+### Bug Fixes
+
+* correct protocol version in manifest to 5.0 only ([5b362a2](https://github.com/d0ugal/terraform-provider-garage/commit/5b362a2f4362905cccf9bcc4212a70707d607a09))
+
 ## [0.0.15](https://github.com/d0ugal/terraform-provider-garage/compare/v0.0.14...v0.0.15) (2025-11-20)
 
 
