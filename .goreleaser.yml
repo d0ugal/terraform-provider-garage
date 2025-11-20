@@ -2,10 +2,22 @@ version: 2
 
 project_name: terraform-provider-garage
 
+before:
+  hooks:
+    # Ensure go.mod is tidy before building
+    - go mod tidy
+
 builds:
   - id: provider
     main: .
-    binary: terraform-provider-garage_{{.Version}}
+    binary: '{{ .ProjectName }}_v{{ .Version }}'
+    env:
+      - CGO_ENABLED=0
+    mod_timestamp: '{{ .CommitTimestamp }}'
+    flags:
+      - -trimpath
+    ldflags:
+      - '-s -w -X main.version={{.Version}} -X main.commit={{.Commit}}'
     goos:
       - freebsd
       - windows
@@ -20,12 +32,6 @@ builds:
         goarch: arm
       - goos: windows
         goarch: arm64
-    env:
-      - CGO_ENABLED=0
-    flags:
-      - -trimpath
-    ldflags:
-      - -s -w
 
 archives:
   - id: default
@@ -35,12 +41,6 @@ archives:
     name_template: "{{ .ProjectName }}_{{ .Version }}_{{ .Os }}_{{ .Arch }}"
     files:
       - terraform-registry-manifest.json
-  # Also upload raw binaries (matching Grafana provider pattern for direct downloads)
-  - id: binaries
-    builds:
-      - provider
-    format: binary
-    name_template: "{{ .ProjectName }}_{{ .Version }}_{{ .Os }}_{{ .Arch }}"
 
 checksum:
   name_template: "{{ .ProjectName }}_{{ .Version }}_SHA256SUMS"
@@ -60,8 +60,10 @@ signs:
       - "${artifact}"
 
 release:
-  mode: replace
   name_template: "v{{ .Version }}"
+  # Create as draft first (can be published manually or via API)
+  # Remove draft: true if you want releases published immediately
+  draft: false
   header: |
     ## Terraform Provider Garage {{ .Version }}
 
@@ -79,3 +81,6 @@ release:
       }
     }
     ```
+
+changelog:
+  disable: true
