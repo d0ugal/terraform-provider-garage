@@ -30,9 +30,9 @@ func Provider() *schema.Provider {
 			},
 		},
 		ResourcesMap: map[string]*schema.Resource{
-			"garage_key":         resourceGarageKey(),
-			"garage_bucket":      resourceGarageBucket(),
-			"garage_bucket_key":  resourceGarageBucketKey(),
+			"garage_key":        resourceGarageKey(),
+			"garage_bucket":     resourceGarageBucket(),
+			"garage_bucket_key": resourceGarageBucketKey(),
 		},
 		ConfigureContextFunc: providerConfigure,
 	}
@@ -50,4 +50,3 @@ func providerConfigure(ctx context.Context, d *schema.ResourceData) (interface{}
 
 	return client, nil
 }
-

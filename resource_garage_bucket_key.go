@@ -5,9 +5,9 @@ import (
 	"fmt"
 	"net/http"
 
+	garage "git.deuxfleurs.fr/garage-sdk/garage-admin-sdk-golang"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/diag"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
-	garage "git.deuxfleurs.fr/garage-sdk/garage-admin-sdk-golang"
 )
 
 func resourceGarageBucketKey() *schema.Resource {
@@ -179,4 +179,3 @@ func resourceGarageBucketKeyDelete(ctx context.Context, d *schema.ResourceData, 
 	d.SetId("")
 	return nil
 }
-

@@ -183,9 +183,9 @@ type LifecycleConfiguration struct {
 }
 
 type Rule struct {
-	ID         string     `xml:"ID"`
-	Status     string     `xml:"Status"`
-	Filter     *Filter    `xml:"Filter,omitempty"`
+	ID         string      `xml:"ID"`
+	Status     string      `xml:"Status"`
+	Filter     *Filter     `xml:"Filter,omitempty"`
 	Expiration *Expiration `xml:"Expiration,omitempty"`
 }
 

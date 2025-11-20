@@ -19,4 +19,3 @@ func NewGarageClient(scheme, host, token string) (*GarageClient, error) {
 	client := garage.NewAPIClient(cfg)
 	return &GarageClient{Client: client}, nil
 }
-
