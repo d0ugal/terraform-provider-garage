@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.0.11](https://github.com/d0ugal/terraform-provider-garage/compare/v0.0.10...v0.0.11) (2025-11-20)
+
+
+### Bug Fixes
+
+* **ci:** prevent dev-build from running on PRs and fix YAML syntax ([2626716](https://github.com/d0ugal/terraform-provider-garage/commit/26267168ac17164279c452b4c21121a256ffb028))
+
 ## [0.0.10](https://github.com/d0ugal/terraform-provider-garage/compare/v0.0.9...v0.0.10) (2025-11-20)
 
 
