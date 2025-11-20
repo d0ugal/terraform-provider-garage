@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.0.13](https://github.com/d0ugal/terraform-provider-garage/compare/v0.0.12...v0.0.13) (2025-11-20)
+
+
+### Bug Fixes
+
+* match Grafana provider release pattern exactly ([3b19fc0](https://github.com/d0ugal/terraform-provider-garage/commit/3b19fc030bfbf2fa7038313fb0a165f5e18ace24))
+* match Grafana provider release pattern exactly ([8a19e83](https://github.com/d0ugal/terraform-provider-garage/commit/8a19e838c93680f79c4dcde52aae4e75c5053140))
+
 ## [0.0.12](https://github.com/d0ugal/terraform-provider-garage/compare/v0.0.11...v0.0.12) (2025-11-20)
 
 
