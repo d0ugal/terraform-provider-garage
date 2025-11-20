@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.0.15](https://github.com/d0ugal/terraform-provider-garage/compare/v0.0.14...v0.0.15) (2025-11-20)
+
+
+### Bug Fixes
+
+* pass GPG passphrase to GoReleaser signing ([40eba09](https://github.com/d0ugal/terraform-provider-garage/commit/40eba09e5a78dc0dd4f282bcc14ce99f68c9cb5d))
+
 ## [0.0.14](https://github.com/d0ugal/terraform-provider-garage/compare/v0.0.13...v0.0.14) (2025-11-20)
 
 
