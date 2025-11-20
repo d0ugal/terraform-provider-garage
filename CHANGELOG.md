@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.0.12](https://github.com/d0ugal/terraform-provider-garage/compare/v0.0.11...v0.0.12) (2025-11-20)
+
+
+### Bug Fixes
+
+* add binary format archives to match Grafana provider pattern ([2e48006](https://github.com/d0ugal/terraform-provider-garage/commit/2e4800679a613526c66b76f9cabdd530efa569c9))
+
 ## [0.0.11](https://github.com/d0ugal/terraform-provider-garage/compare/v0.0.10...v0.0.11) (2025-11-20)
 
 
