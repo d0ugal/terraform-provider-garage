@@ -35,6 +35,12 @@ archives:
     name_template: "{{ .ProjectName }}_{{ .Version }}_{{ .Os }}_{{ .Arch }}"
     files:
       - terraform-registry-manifest.json
+  # Also upload raw binaries (matching Grafana provider pattern for direct downloads)
+  - id: binaries
+    builds:
+      - provider
+    format: binary
+    name_template: "{{ .ProjectName }}_{{ .Version }}_{{ .Os }}_{{ .Arch }}"
 
 checksum:
   name_template: "{{ .ProjectName }}_{{ .Version }}_SHA256SUMS"
