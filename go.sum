@@ -1,5 +1,5 @@
-git.deuxfleurs.fr/garage-sdk/garage-admin-sdk-golang v0.0.0-20250915173256-61e2693ca1e6 h1:tggTVOSxTp3alolTu11OnvOjPbPp93+cwLV8Rw4DrbE=
-git.deuxfleurs.fr/garage-sdk/garage-admin-sdk-golang v0.0.0-20250915173256-61e2693ca1e6/go.mod h1:32CRFib3IMeHAgcQLGiFdaVESQwCWXea90pQVoWzjGA=
+git.deuxfleurs.fr/garage-sdk/garage-admin-sdk-golang v0.0.0-20260106092213-694c0d66012a h1:E4xM3s0dbg57o0Jbi/M0sINkTMlJIpPysj2mUYQCPMA=
+git.deuxfleurs.fr/garage-sdk/garage-admin-sdk-golang v0.0.0-20260106092213-694c0d66012a/go.mod h1:IuzoSKHm8WlO/+g3u6kGJ30YAnUPq/cDsB3rJMB/T90=
 github.com/agext/levenshtein v1.2.2 h1:0S/Yg6LYmFJ5stwQeRp6EeOcCbj7xiqQSdNelsXvaqE=
 github.com/agext/levenshtein v1.2.2/go.mod h1:JEDfjyjHDjOF/1e4FlBE/PkbqA9OfWu2ki2W0IB5558=
 github.com/apparentlymart/go-textseg/v12 v12.0.0/go.mod h1:S/4uRK2UtaQttw1GenVJEynmyUenKwP++x/+DdGV/Ec=
