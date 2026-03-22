@@ -2,6 +2,8 @@ module github.com/d0ugal/terraform-provider-garage
 
 go 1.25.0
 
+toolchain go1.26.0
+
 require (
 	git.deuxfleurs.fr/garage-sdk/garage-admin-sdk-golang v0.0.0-20260106092213-694c0d66012a
 	github.com/hashicorp/terraform-plugin-sdk/v2 v2.40.0
