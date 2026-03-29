@@ -4,6 +4,7 @@ import (
 	"context"
 	"fmt"
 	"net/http"
+	"strings"
 
 	garage "git.deuxfleurs.fr/garage-sdk/garage-admin-sdk-golang"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/diag"
@@ -16,6 +17,21 @@ func resourceGarageBucketKey() *schema.Resource {
 		ReadContext:   resourceGarageBucketKeyRead,
 		UpdateContext: resourceGarageBucketKeyUpdate,
 		DeleteContext: resourceGarageBucketKeyDelete,
+		Importer: &schema.ResourceImporter{
+			StateContext: func(ctx context.Context, d *schema.ResourceData, meta any) ([]*schema.ResourceData, error) {
+				parts := strings.SplitN(d.Id(), "/", 2)
+
+				if len(parts) != 2 || parts[0] == "" || parts[1] == "" {
+					return nil, fmt.Errorf("unexpected format of ID (%s), expected bucked_id/access_key_id", d.Id())
+				}
+
+				d.Set("bucket_id", parts[0])
+				d.Set("access_key_id", parts[1])
+				d.SetId(fmt.Sprintf("%s/%s", parts[0], parts[1]))
+
+				return []*schema.ResourceData{d}, nil
+			},
+		},
 		Schema: map[string]*schema.Schema{
 			"bucket_id": {
 				Type:        schema.TypeString,

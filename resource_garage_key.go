@@ -16,6 +16,7 @@ func resourceGarageKey() *schema.Resource {
 		ReadContext:   resourceGarageKeyRead,
 		UpdateContext: resourceGarageKeyUpdate,
 		DeleteContext: resourceGarageKeyDelete,
+		Importer: &schema.ResourceImporter{},
 		Schema: map[string]*schema.Schema{
 			"name": {
 				Type:        schema.TypeString,
