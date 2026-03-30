@@ -19,7 +19,7 @@ func resourceGarageBucket() *schema.Resource {
 		ReadContext:   resourceGarageBucketRead,
 		UpdateContext: resourceGarageBucketUpdate,
 		DeleteContext: resourceGarageBucketDelete,
-		Importer: &schema.ResourceImporter{},
+		Importer:      &schema.ResourceImporter{},
 		Schema: map[string]*schema.Schema{
 			"id": {
 				Type:        schema.TypeString,
