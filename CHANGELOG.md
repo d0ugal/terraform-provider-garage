@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.0.18](https://github.com/d0ugal/terraform-provider-garage/compare/v0.0.17...v0.0.18) (2026-03-30)
+
+
+### Bug Fixes
+
+* typo and missing error handling in bucket_key importer ([f2348c9](https://github.com/d0ugal/terraform-provider-garage/commit/f2348c9c8f6ee10968032e874c9dc52ac742552e))
+
 ## [0.0.17](https://github.com/d0ugal/terraform-provider-garage/compare/v0.0.16...v0.0.17) (2026-03-19)
 
 
