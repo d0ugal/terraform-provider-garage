@@ -8,6 +8,36 @@ on:
       - CHANGELOG.md
 
 jobs:
+  format:
+    name: Format
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
+
+      - name: Set up Go
+        uses: actions/setup-go@4b73464bb391d4059bd26b0524d20df3927bd417 # v6
+        with:
+          go-version: '1.26'
+
+      - name: Check formatting
+        run: |
+          if [ -n "$(gofmt -l .)" ]; then
+            echo "The following files are not formatted. Please run 'go fmt ./...' and commit."
+            gofmt -l .
+            exit 1
+          fi
+
+      - name: Check go mod tidy
+        run: |
+          go mod tidy
+          if [ -n "$(git status --porcelain)" ]; then
+            echo "go.mod or go.sum is not tidy. Please run 'go mod tidy' and commit."
+            git diff
+            exit 1
+          fi
+
   test:
     name: Test
     runs-on: ubuntu-latest
@@ -32,7 +62,7 @@ jobs:
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@1af58845a975a7985b0beb0cbe6fbbb71a41dbad # v5
         with:
-          file: ./coverage.txt
+          files: ./coverage.txt
           flags: unittests
           name: codecov-umbrella
 
