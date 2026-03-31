@@ -65,7 +65,7 @@ func resourceGarageBucketCreate(ctx context.Context, d *schema.ResourceData, m i
 		return diag.FromErr(fmt.Errorf("failed to create bucket: %w", err))
 	}
 	defer func() {
-		if resp.Body != nil {
+		if resp != nil && resp.Body != nil {
 			_ = resp.Body.Close()
 		}
 	}()
@@ -112,7 +112,7 @@ func resourceGarageBucketRead(ctx context.Context, d *schema.ResourceData, m int
 		return diag.FromErr(fmt.Errorf("failed to read bucket: %w", err))
 	}
 	defer func() {
-		if resp.Body != nil {
+		if resp != nil && resp.Body != nil {
 			_ = resp.Body.Close()
 		}
 	}()
@@ -206,7 +206,7 @@ func setBucketLifecyclePolicy(ctx context.Context, client *GarageClient, bucketI
 		return fmt.Errorf("failed to get bucket info: %w", err)
 	}
 	defer func() {
-		if resp.Body != nil {
+		if resp != nil && resp.Body != nil {
 			_ = resp.Body.Close()
 		}
 	}()
@@ -257,7 +257,7 @@ func setBucketLifecyclePolicy(ctx context.Context, client *GarageClient, bucketI
 	// Execute request
 	httpClient := &http.Client{}
 	resp, err = httpClient.Do(req)
-	if err != nil {
+	if err != nil || resp == nil {
 		return fmt.Errorf("failed to execute request: %w", err)
 	}
 	defer func() {
@@ -281,7 +281,7 @@ func getBucketLifecyclePolicy(ctx context.Context, client *GarageClient, bucketI
 		return 0, fmt.Errorf("failed to get bucket info: %w", err)
 	}
 	defer func() {
-		if resp.Body != nil {
+		if resp != nil && resp.Body != nil {
 			_ = resp.Body.Close()
 		}
 	}()
@@ -312,7 +312,7 @@ func getBucketLifecyclePolicy(ctx context.Context, client *GarageClient, bucketI
 	// Execute request
 	httpClient := &http.Client{}
 	resp, err = httpClient.Do(req)
-	if err != nil {
+	if err != nil || resp == nil {
 		return 0, fmt.Errorf("failed to execute request: %w", err)
 	}
 	defer func() {
