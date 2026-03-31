@@ -47,6 +47,16 @@ func resourceGarageBucket() *schema.Resource {
 				Optional:    true,
 				Description: "Number of days after which objects in this bucket will be automatically deleted. Set to 0 to disable expiration.",
 			},
+			"max_size": {
+				Type:        schema.TypeInt,
+				Optional:    true,
+				Description: "Maximum size quota for this bucket",
+			},
+			"max_objects": {
+				Type:        schema.TypeInt,
+				Optional:    true,
+				Description: "Maximum number of objects quota for this bucket",
+			},
 		},
 	}
 }
@@ -84,6 +94,33 @@ func resourceGarageBucketCreate(ctx context.Context, d *schema.ResourceData, m i
 		if err := d.Set("global_alias", bucket.GlobalAliases[0]); err != nil {
 			return diag.FromErr(err)
 		}
+	}
+
+	// Set quotas if specified
+	quotas := garage.NewApiBucketQuotas()
+	doUpdate := false
+
+	if val, ok := d.GetOk("max_size"); ok {
+		quotas.SetMaxSize(int64(val.(int)))
+		doUpdate = true
+	}
+	if val, ok := d.GetOk("max_objects"); ok {
+		quotas.SetMaxObjects(int64(val.(int)))
+		doUpdate = true
+	}
+
+	if doUpdate {
+		bucketUpdate := garage.NewUpdateBucketRequestBody()
+		bucketUpdate.SetQuotas(*quotas)
+		_, resp, err := client.Client.BucketAPI.UpdateBucket(ctx).Id(bucket.Id).UpdateBucketRequestBody(*bucketUpdate).Execute()
+		if err != nil {
+			return diag.FromErr(fmt.Errorf("failed to update bucket: %w", err))
+		}
+		defer func() {
+			if resp != nil && resp.Body != nil {
+				_ = resp.Body.Close()
+			}
+		}()
 	}
 
 	// Set expiration policy if specified
@@ -126,6 +163,17 @@ func resourceGarageBucketRead(ctx context.Context, d *schema.ResourceData, m int
 	if err := d.Set("objects", bucket.Objects); err != nil {
 		return diag.FromErr(err)
 	}
+	quotas := bucket.GetQuotas()
+	if val, ok := quotas.GetMaxSizeOk(); ok {
+		if err := d.Set("max_size", val); err != nil {
+			return diag.FromErr(err)
+		}
+	}
+	if val, ok := quotas.GetMaxObjectsOk(); ok {
+		if err := d.Set("max_objects", val); err != nil {
+			return diag.FromErr(err)
+		}
+	}
 	if len(bucket.GlobalAliases) > 0 {
 		if err := d.Set("global_alias", bucket.GlobalAliases[0]); err != nil {
 			return diag.FromErr(err)
@@ -151,6 +199,28 @@ func resourceGarageBucketRead(ctx context.Context, d *schema.ResourceData, m int
 func resourceGarageBucketUpdate(ctx context.Context, d *schema.ResourceData, m interface{}) diag.Diagnostics {
 	client := m.(*GarageClient)
 	bucketID := d.Id()
+
+	// Handle quota changes
+	if d.HasChanges("max_size", "max_objects") {
+		bucketUpdate := garage.NewUpdateBucketRequestBody()
+		quotas := garage.NewApiBucketQuotas()
+		if val, ok := d.GetOk("max_size"); ok {
+			quotas.SetMaxSize(int64(val.(int)))
+		}
+		if val, ok := d.GetOk("max_objects"); ok {
+			quotas.SetMaxObjects(int64(val.(int)))
+		}
+		bucketUpdate.SetQuotas(*quotas)
+		_, resp, err := client.Client.BucketAPI.UpdateBucket(ctx).Id(bucketID).UpdateBucketRequestBody(*bucketUpdate).Execute()
+		if err != nil {
+			return diag.FromErr(fmt.Errorf("failed to update bucket: %w", err))
+		}
+		defer func() {
+			if resp != nil && resp.Body != nil {
+				_ = resp.Body.Close()
+			}
+		}()
+	}
 
 	// Handle expiration policy changes
 	if d.HasChange("expiration_days") {
