@@ -45,6 +45,11 @@ resource "garage_bucket" "loki" {
   # Optional quotas (0 = unlimited)
   max_size    = 10737418240  # 10 GiB in bytes
   max_objects = 100000
+
+  # Configure website access
+  website_access_enabled = true
+  website_access_index_document = "index2.html"
+  website_access_error_document = "error.html"
 }
 
 resource "garage_bucket_key" "loki_access" {
