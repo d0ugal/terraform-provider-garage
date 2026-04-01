@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.0.19](https://github.com/d0ugal/terraform-provider-garage/compare/v0.0.18...v0.0.19) (2026-04-01)
+
+
+### Reverts
+
+* remove broken commitlint CI ([3cdc95f](https://github.com/d0ugal/terraform-provider-garage/commit/3cdc95f44b67d6d2adcd1cacb18a82d0c7a018da))
+
 ## [0.0.18](https://github.com/d0ugal/terraform-provider-garage/compare/v0.0.17...v0.0.18) (2026-03-30)
 
 
