@@ -50,7 +50,7 @@ func resourceGarageKeyCreate(ctx context.Context, d *schema.ResourceData, m inte
 		return diag.FromErr(fmt.Errorf("failed to create key: %w", err))
 	}
 	defer func() {
-		if resp.Body != nil {
+		if resp != nil && resp.Body != nil {
 			_ = resp.Body.Close()
 		}
 	}()
@@ -84,7 +84,7 @@ func resourceGarageKeyRead(ctx context.Context, d *schema.ResourceData, m interf
 		return diag.FromErr(fmt.Errorf("failed to read key: %w", err))
 	}
 	defer func() {
-		if resp.Body != nil {
+		if resp != nil && resp.Body != nil {
 			_ = resp.Body.Close()
 		}
 	}()
