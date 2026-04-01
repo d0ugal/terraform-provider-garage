@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.1.0](https://github.com/d0ugal/terraform-provider-garage/compare/v0.0.19...v0.1.0) (2026-04-01)
+
+
+### Features
+
+* document bucket quota support in README ([60bfff9](https://github.com/d0ugal/terraform-provider-garage/commit/60bfff98586936a985fd89759c539397eefb354c))
+
 ## [0.0.19](https://github.com/d0ugal/terraform-provider-garage/compare/v0.0.18...v0.0.19) (2026-04-01)
 
 
