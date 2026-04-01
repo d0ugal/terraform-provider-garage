@@ -57,6 +57,21 @@ func resourceGarageBucket() *schema.Resource {
 				Optional:    true,
 				Description: "Maximum number of objects quota for this bucket",
 			},
+			"website_access_enabled": {
+				Type:        schema.TypeBool,
+				Optional:    true,
+				Description: "Whether website access is enabled for this bucket",
+			},
+			"website_access_index_document": {
+				Type:        schema.TypeString,
+				Optional:    true,
+				Description: "Which document to serve as index page for this bucket",
+			},
+			"website_access_error_document": {
+				Type:        schema.TypeString,
+				Optional:    true,
+				Description: "Which document to serve as error page for this bucket",
+			},
 		},
 	}
 }
@@ -109,9 +124,25 @@ func resourceGarageBucketCreate(ctx context.Context, d *schema.ResourceData, m i
 		doUpdate = true
 	}
 
+	// Set website access if specified
+	websiteAccessEnabled := d.Get("website_access_enabled").(bool)
+	websiteAccess := garage.NewUpdateBucketWebsiteAccess(websiteAccessEnabled)
+	if websiteAccessEnabled {
+		doUpdate = true
+		if val, ok := d.GetOk("website_access_index_document"); ok {
+			websiteAccess.SetIndexDocument(val.(string))
+		} else {
+			websiteAccess.SetIndexDocument("index.html")
+		}
+		if val, ok := d.GetOk("website_access_error_document"); ok {
+			websiteAccess.SetErrorDocument(val.(string))
+		}
+	}
+
 	if doUpdate {
 		bucketUpdate := garage.NewUpdateBucketRequestBody()
 		bucketUpdate.SetQuotas(*quotas)
+		bucketUpdate.SetWebsiteAccess(*websiteAccess)
 		_, resp, err := client.Client.BucketAPI.UpdateBucket(ctx).Id(bucket.Id).UpdateBucketRequestBody(*bucketUpdate).Execute()
 		if err != nil {
 			return diag.FromErr(fmt.Errorf("failed to update bucket: %w", err))
@@ -174,6 +205,26 @@ func resourceGarageBucketRead(ctx context.Context, d *schema.ResourceData, m int
 			return diag.FromErr(err)
 		}
 	}
+	var websiteAccess garage.GetBucketInfoWebsiteResponse
+	if bucket.WebsiteAccess {
+		websiteAccess = bucket.GetWebsiteConfig()
+	}
+	if err := d.Set("website_access_enabled", bucket.WebsiteAccess); err != nil {
+		return diag.FromErr(err)
+	}
+	_, indexDocumentSet := d.GetOk("website_access_index_document")
+	newIndexDocument := websiteAccess.GetIndexDocument()
+	// "nil" is mapped to the "index.html" default when updating the resource
+	// Account for the default here to prevent updating the resource again
+	if indexDocumentSet || newIndexDocument != "index.html" {
+		if err := d.Set("website_access_index_document", newIndexDocument); err != nil {
+			return diag.FromErr(err)
+		}
+	}
+	if err := d.Set("website_access_error_document", websiteAccess.GetErrorDocument()); err != nil {
+		return diag.FromErr(err)
+	}
+
 	if len(bucket.GlobalAliases) > 0 {
 		if err := d.Set("global_alias", bucket.GlobalAliases[0]); err != nil {
 			return diag.FromErr(err)
@@ -201,16 +252,45 @@ func resourceGarageBucketUpdate(ctx context.Context, d *schema.ResourceData, m i
 	bucketID := d.Id()
 
 	// Handle quota changes
+	doUpdate := false
+	var quotas *garage.ApiBucketQuotas
 	if d.HasChanges("max_size", "max_objects") {
-		bucketUpdate := garage.NewUpdateBucketRequestBody()
-		quotas := garage.NewApiBucketQuotas()
+		doUpdate = true
+		quotas = garage.NewApiBucketQuotas()
 		if val, ok := d.GetOk("max_size"); ok {
 			quotas.SetMaxSize(int64(val.(int)))
 		}
 		if val, ok := d.GetOk("max_objects"); ok {
 			quotas.SetMaxObjects(int64(val.(int)))
 		}
-		bucketUpdate.SetQuotas(*quotas)
+	}
+
+	// Handle website access changes
+	var websiteAccess *garage.UpdateBucketWebsiteAccess
+	if d.HasChanges("website_access_enabled", "website_access_index_document", "website_access_error_document") {
+		doUpdate = true
+		websiteAccessEnabled := d.Get("website_access_enabled").(bool)
+		websiteAccess = garage.NewUpdateBucketWebsiteAccess(websiteAccessEnabled)
+		if websiteAccessEnabled {
+			if val, ok := d.GetOk("website_access_index_document"); ok {
+				websiteAccess.SetIndexDocument(val.(string))
+			} else {
+				websiteAccess.SetIndexDocument("index.html")
+			}
+			if val, ok := d.GetOk("website_access_error_document"); ok {
+				websiteAccess.SetErrorDocument(val.(string))
+			}
+		}
+	}
+
+	if doUpdate {
+		bucketUpdate := garage.NewUpdateBucketRequestBody()
+		if quotas != nil {
+			bucketUpdate.SetQuotas(*quotas)
+		}
+		if websiteAccess != nil {
+			bucketUpdate.SetWebsiteAccess(*websiteAccess)
+		}
 		_, resp, err := client.Client.BucketAPI.UpdateBucket(ctx).Id(bucketID).UpdateBucketRequestBody(*bucketUpdate).Execute()
 		if err != nil {
 			return diag.FromErr(fmt.Errorf("failed to update bucket: %w", err))
