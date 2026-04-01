@@ -41,6 +41,10 @@ resource "garage_key" "loki_key" {
 
 resource "garage_bucket" "loki" {
   global_alias = "loki"
+
+  # Optional quotas (0 = unlimited)
+  max_size    = 10737418240  # 10 GiB in bytes
+  max_objects = 100000
 }
 
 resource "garage_bucket_key" "loki_access" {
