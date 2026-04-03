@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.2.0](https://github.com/d0ugal/terraform-provider-garage/compare/v0.1.0...v0.2.0) (2026-04-03)
+
+
+### Features
+
+* support website access ([4994326](https://github.com/d0ugal/terraform-provider-garage/commit/4994326cfb9f6f778e3516df9a444b4b119bbef4))
+
 ## [0.1.0](https://github.com/d0ugal/terraform-provider-garage/compare/v0.0.19...v0.1.0) (2026-04-01)
 
 
