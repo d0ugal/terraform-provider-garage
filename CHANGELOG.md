@@ -1,5 +1,14 @@
 # Changelog
 
+## [0.2.1](https://github.com/d0ugal/terraform-provider-garage/compare/v0.2.0...v0.2.1) (2026-04-16)
+
+
+### Bug Fixes
+
+* update google.golang.org/genproto/googleapis/rpc digest to afd174a ([b0b38a0](https://github.com/d0ugal/terraform-provider-garage/commit/b0b38a08977ca26d0963edf95baff55fb3043faa))
+* update module github.com/apparentlymart/go-textseg/v15 to v16 ([4d3587c](https://github.com/d0ugal/terraform-provider-garage/commit/4d3587cf780d62d91d6a709d36986fdc0491e020))
+* update module google.golang.org/appengine to v2 ([fcdd467](https://github.com/d0ugal/terraform-provider-garage/commit/fcdd467c4c56955687fc49c91e1be0d157e2ccba))
+
 ## [0.2.0](https://github.com/d0ugal/terraform-provider-garage/compare/v0.1.0...v0.2.0) (2026-04-03)
 
 
