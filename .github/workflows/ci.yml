@@ -115,7 +115,7 @@ jobs:
           fetch-depth: 0
 
       - name: Run Trivy vulnerability scanner
-        uses: aquasecurity/trivy-action@dada78485d6b2b310d433af366da35a70cf01102 # master
+        uses: aquasecurity/trivy-action@876cf04c63f65e9799bcf1043b584e72469c7143 # master
         with:
           scan-type: 'fs'
           scan-ref: '.'
