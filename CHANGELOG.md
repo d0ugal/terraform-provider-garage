@@ -1,5 +1,18 @@
 # Changelog
 
+## [0.2.2](https://github.com/d0ugal/terraform-provider-garage/compare/v0.2.1...v0.2.2) (2026-04-17)
+
+
+### Bug Fixes
+
+* update dependency go to v1.26.2 ([57c9516](https://github.com/d0ugal/terraform-provider-garage/commit/57c9516124e14f51de8e2c848fdbf0711de51e1e))
+* update module github.com/fatih/color to v1.19.0 ([1b1b1f1](https://github.com/d0ugal/terraform-provider-garage/commit/1b1b1f10a4528661b36d9c1014df3ccd3cae3d07))
+* update module github.com/hashicorp/go-version to v1.9.0 ([773d84d](https://github.com/d0ugal/terraform-provider-garage/commit/773d84d4cff6b517d913a4ff5c009f4d078628b6))
+* update module github.com/mattn/go-isatty to v0.0.21 ([99ef7c2](https://github.com/d0ugal/terraform-provider-garage/commit/99ef7c2019ae629f85624acffb0e5d711dbe3278))
+* update module github.com/zclconf/go-cty to v1.18.1 ([8f08989](https://github.com/d0ugal/terraform-provider-garage/commit/8f089898877971a4accfe83f44fd255f237f4be9))
+* update module golang.org/x/mod to v0.35.0 ([bee92c9](https://github.com/d0ugal/terraform-provider-garage/commit/bee92c972d29ef1b9b48c10da19a0d2f7504a8a2))
+* update module golang.org/x/net to v0.53.0 ([ef0ca5f](https://github.com/d0ugal/terraform-provider-garage/commit/ef0ca5f180505e0791d4e8ba130eb4c7c7db973d))
+
 ## [0.2.1](https://github.com/d0ugal/terraform-provider-garage/compare/v0.2.0...v0.2.1) (2026-04-16)
 
 
