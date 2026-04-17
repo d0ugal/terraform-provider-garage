@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.2.3](https://github.com/d0ugal/terraform-provider-garage/compare/v0.2.2...v0.2.3) (2026-04-17)
+
+
+### Bug Fixes
+
+* update module golang.org/x/tools to v0.44.0 ([8a48741](https://github.com/d0ugal/terraform-provider-garage/commit/8a48741073180b4bec129dec7b804eb70c7e49a8))
+* update module google.golang.org/grpc to v1.80.0 ([fbd2ac7](https://github.com/d0ugal/terraform-provider-garage/commit/fbd2ac753b38bd21e2f5d2bd37357fc920d416cf))
+
 ## [0.2.2](https://github.com/d0ugal/terraform-provider-garage/compare/v0.2.1...v0.2.2) (2026-04-17)
 
 
