@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.2.5](https://github.com/d0ugal/terraform-provider-garage/compare/v0.2.4...v0.2.5) (2026-04-23)
+
+
+### Bug Fixes
+
+* update git.deuxfleurs.fr/garage-sdk/garage-admin-sdk-golang digest to 1fad3da ([7fb1937](https://github.com/d0ugal/terraform-provider-garage/commit/7fb1937fcd8658efd469c28d76217e983e13e68e))
+
 ## [0.2.4](https://github.com/d0ugal/terraform-provider-garage/compare/v0.2.3...v0.2.4) (2026-04-20)
 
 
