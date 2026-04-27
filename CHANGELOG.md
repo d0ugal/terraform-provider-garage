@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.2.6](https://github.com/d0ugal/terraform-provider-garage/compare/v0.2.5...v0.2.6) (2026-04-27)
+
+
+### Bug Fixes
+
+* update module github.com/mattn/go-isatty to v0.0.22 ([999e8bd](https://github.com/d0ugal/terraform-provider-garage/commit/999e8bd5cda52626113eab353b5a113866c9a044))
+
 ## [0.2.5](https://github.com/d0ugal/terraform-provider-garage/compare/v0.2.4...v0.2.5) (2026-04-23)
 
 
