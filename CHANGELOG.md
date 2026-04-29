@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.2.8](https://github.com/d0ugal/terraform-provider-garage/compare/v0.2.7...v0.2.8) (2026-04-29)
+
+
+### Bug Fixes
+
+* update module github.com/hashicorp/go-plugin to v1.8.0 ([bc1b4b6](https://github.com/d0ugal/terraform-provider-garage/commit/bc1b4b6cd92994f877c0e15d69f0f92bd2723768))
+
 ## [0.2.7](https://github.com/d0ugal/terraform-provider-garage/compare/v0.2.6...v0.2.7) (2026-04-28)
 
 
