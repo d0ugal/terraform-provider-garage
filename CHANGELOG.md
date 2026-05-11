@@ -1,5 +1,19 @@
 # Changelog
 
+## [0.2.10](https://github.com/d0ugal/terraform-provider-garage/compare/v0.2.9...v0.2.10) (2026-05-11)
+
+
+### Bug Fixes
+
+* update go toolchain directive to v1.26.3 ([65dd816](https://github.com/d0ugal/terraform-provider-garage/commit/65dd816df49c9c4128fa06d2ca36ff43518a35c3))
+* update google.golang.org/genproto/googleapis/rpc digest to 3700d41 ([7fd1d4d](https://github.com/d0ugal/terraform-provider-garage/commit/7fd1d4d36fa6a7e52158f0c726ebced848b82100))
+* update google.golang.org/genproto/googleapis/rpc digest to 60b97b3 ([cc95f50](https://github.com/d0ugal/terraform-provider-garage/commit/cc95f500b34ee94fc0dbf5a3055cf956eb19c693))
+* update module golang.org/x/mod to v0.36.0 ([23f1f6f](https://github.com/d0ugal/terraform-provider-garage/commit/23f1f6fc789ab4724d517d846997ef49347f5519))
+* update module golang.org/x/net to v0.54.0 ([7683528](https://github.com/d0ugal/terraform-provider-garage/commit/76835288ab336859ec90d4b941625f8ac3b8b5d3))
+* update module golang.org/x/sys to v0.44.0 ([c44fd59](https://github.com/d0ugal/terraform-provider-garage/commit/c44fd593017f27240f70f4fc9241e2d4e62021bf))
+* update module golang.org/x/text to v0.37.0 ([37f2d15](https://github.com/d0ugal/terraform-provider-garage/commit/37f2d1524f641c8d6fb5c40ce4dbb4d487ab85a0))
+* update module golang.org/x/tools to v0.45.0 ([ab4abae](https://github.com/d0ugal/terraform-provider-garage/commit/ab4abaea04d4a9e3c9e6bd685a2de22d4d372352))
+
 ## [0.2.9](https://github.com/d0ugal/terraform-provider-garage/compare/v0.2.8...v0.2.9) (2026-05-04)
 
 
