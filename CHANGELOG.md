@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.2.12](https://github.com/d0ugal/terraform-provider-garage/compare/v0.2.11...v0.2.12) (2026-05-19)
+
+
+### Bug Fixes
+
+* update google.golang.org/genproto/googleapis/rpc digest to 037a81a ([1ab31c4](https://github.com/d0ugal/terraform-provider-garage/commit/1ab31c49026ffcec394b05a77d584f13c5e23039))
+
 ## [0.2.11](https://github.com/d0ugal/terraform-provider-garage/compare/v0.2.10...v0.2.11) (2026-05-14)
 
 
