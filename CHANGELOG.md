@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.2.13](https://github.com/d0ugal/terraform-provider-garage/compare/v0.2.12...v0.2.13) (2026-05-22)
+
+
+### Bug Fixes
+
+* update module golang.org/x/sys to v0.45.0 ([ed6583f](https://github.com/d0ugal/terraform-provider-garage/commit/ed6583f50842550854d2acd2db8f3a467adfbc6b))
+
 ## [0.2.12](https://github.com/d0ugal/terraform-provider-garage/compare/v0.2.11...v0.2.12) (2026-05-19)
 
 
