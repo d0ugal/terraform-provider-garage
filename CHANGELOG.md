@@ -1,5 +1,15 @@
 # Changelog
 
+## [0.2.14](https://github.com/d0ugal/terraform-provider-garage/compare/v0.2.13...v0.2.14) (2026-05-26)
+
+
+### Bug Fixes
+
+* update google.golang.org/genproto/googleapis/rpc digest to 0a33c5d ([c227ac0](https://github.com/d0ugal/terraform-provider-garage/commit/c227ac0185ac658df2db42dba20f80ac18e3d055))
+* update google.golang.org/genproto/googleapis/rpc digest to 3dc84a4 ([3233106](https://github.com/d0ugal/terraform-provider-garage/commit/32331067955b5f25a3cd968e1ea0ed4a4c1a2256))
+* update google.golang.org/genproto/googleapis/rpc digest to 7f3bc5b ([752024d](https://github.com/d0ugal/terraform-provider-garage/commit/752024d27a766751f0ba0a2b57ea149d377e6f6c))
+* update google.golang.org/genproto/googleapis/rpc digest to 9641223 ([3a27131](https://github.com/d0ugal/terraform-provider-garage/commit/3a27131833eb12d53586c6c584daaa602f171051))
+
 ## [0.2.13](https://github.com/d0ugal/terraform-provider-garage/compare/v0.2.12...v0.2.13) (2026-05-22)
 
 
