@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.2.21](https://github.com/d0ugal/terraform-provider-garage/compare/v0.2.20...v0.2.21) (2026-06-25)
+
+
+### Bug Fixes
+
+* update module golang.org/x/tools to v0.47.0 ([adbf139](https://github.com/d0ugal/terraform-provider-garage/commit/adbf13947ffd1146eda5f7de628fd8e38ba44d09))
+
 ## [0.2.20](https://github.com/d0ugal/terraform-provider-garage/compare/v0.2.19...v0.2.20) (2026-06-24)
 
 
