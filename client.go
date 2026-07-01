@@ -17,5 +17,6 @@ func NewGarageClient(scheme, host, token string) (*GarageClient, error) {
 	cfg.DefaultHeader["Authorization"] = fmt.Sprintf("Bearer %s", token)
 
 	client := garage.NewAPIClient(cfg)
+
 	return &GarageClient{Client: client}, nil
 }
