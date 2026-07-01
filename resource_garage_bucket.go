@@ -96,15 +96,19 @@ func resourceGarageBucketCreate(ctx context.Context, d *schema.ResourceData, m i
 	}()
 
 	d.SetId(bucket.Id)
+
 	if err := d.Set("id", bucket.Id); err != nil {
 		return diag.FromErr(err)
 	}
+
 	if err := d.Set("bytes", bucket.Bytes); err != nil {
 		return diag.FromErr(err)
 	}
+
 	if err := d.Set("objects", bucket.Objects); err != nil {
 		return diag.FromErr(err)
 	}
+
 	if len(bucket.GlobalAliases) > 0 {
 		if err := d.Set("global_alias", bucket.GlobalAliases[0]); err != nil {
 			return diag.FromErr(err)
@@ -117,23 +121,29 @@ func resourceGarageBucketCreate(ctx context.Context, d *schema.ResourceData, m i
 
 	if val, ok := d.GetOk("max_size"); ok {
 		quotas.SetMaxSize(int64(val.(int)))
+
 		doUpdate = true
 	}
+
 	if val, ok := d.GetOk("max_objects"); ok {
 		quotas.SetMaxObjects(int64(val.(int)))
+
 		doUpdate = true
 	}
 
 	// Set website access if specified
 	websiteAccessEnabled := d.Get("website_access_enabled").(bool)
+
 	websiteAccess := garage.NewUpdateBucketWebsiteAccess(websiteAccessEnabled)
 	if websiteAccessEnabled {
 		doUpdate = true
+
 		if val, ok := d.GetOk("website_access_index_document"); ok {
 			websiteAccess.SetIndexDocument(val.(string))
 		} else {
 			websiteAccess.SetIndexDocument("index.html")
 		}
+
 		if val, ok := d.GetOk("website_access_error_document"); ok {
 			websiteAccess.SetErrorDocument(val.(string))
 		}
@@ -143,10 +153,12 @@ func resourceGarageBucketCreate(ctx context.Context, d *schema.ResourceData, m i
 		bucketUpdate := garage.NewUpdateBucketRequestBody()
 		bucketUpdate.SetQuotas(*quotas)
 		bucketUpdate.SetWebsiteAccess(*websiteAccess)
+
 		_, resp, err := client.Client.BucketAPI.UpdateBucket(ctx).Id(bucket.Id).UpdateBucketRequestBody(*bucketUpdate).Execute()
 		if err != nil {
 			return diag.FromErr(fmt.Errorf("failed to update bucket: %w", err))
 		}
+
 		defer func() {
 			if resp != nil && resp.Body != nil {
 				_ = resp.Body.Close()
@@ -159,6 +171,7 @@ func resourceGarageBucketCreate(ctx context.Context, d *schema.ResourceData, m i
 		if err := setBucketLifecyclePolicy(ctx, client, bucket.Id, expirationDays.(int)); err != nil {
 			return diag.FromErr(fmt.Errorf("failed to set expiration policy: %w", err))
 		}
+
 		if err := d.Set("expiration_days", expirationDays.(int)); err != nil {
 			return diag.FromErr(err)
 		}
@@ -177,6 +190,7 @@ func resourceGarageBucketRead(ctx context.Context, d *schema.ResourceData, m int
 			d.SetId("")
 			return nil
 		}
+
 		return diag.FromErr(fmt.Errorf("failed to read bucket: %w", err))
 	}
 	defer func() {
@@ -188,30 +202,37 @@ func resourceGarageBucketRead(ctx context.Context, d *schema.ResourceData, m int
 	if err := d.Set("id", bucket.Id); err != nil {
 		return diag.FromErr(err)
 	}
+
 	if err := d.Set("bytes", bucket.Bytes); err != nil {
 		return diag.FromErr(err)
 	}
+
 	if err := d.Set("objects", bucket.Objects); err != nil {
 		return diag.FromErr(err)
 	}
+
 	quotas := bucket.GetQuotas()
 	if val, ok := quotas.GetMaxSizeOk(); ok {
 		if err := d.Set("max_size", val); err != nil {
 			return diag.FromErr(err)
 		}
 	}
+
 	if val, ok := quotas.GetMaxObjectsOk(); ok {
 		if err := d.Set("max_objects", val); err != nil {
 			return diag.FromErr(err)
 		}
 	}
+
 	var websiteAccess garage.GetBucketInfoWebsiteResponse
 	if bucket.WebsiteAccess {
 		websiteAccess = bucket.GetWebsiteConfig()
 	}
+
 	if err := d.Set("website_access_enabled", bucket.WebsiteAccess); err != nil {
 		return diag.FromErr(err)
 	}
+
 	_, indexDocumentSet := d.GetOk("website_access_index_document")
 	newIndexDocument := websiteAccess.GetIndexDocument()
 	// "nil" is mapped to the "index.html" default when updating the resource
@@ -221,6 +242,7 @@ func resourceGarageBucketRead(ctx context.Context, d *schema.ResourceData, m int
 			return diag.FromErr(err)
 		}
 	}
+
 	if err := d.Set("website_access_error_document", websiteAccess.GetErrorDocument()); err != nil {
 		return diag.FromErr(err)
 	}
@@ -253,13 +275,17 @@ func resourceGarageBucketUpdate(ctx context.Context, d *schema.ResourceData, m i
 
 	// Handle quota changes
 	doUpdate := false
+
 	var quotas *garage.ApiBucketQuotas
+
 	if d.HasChanges("max_size", "max_objects") {
 		doUpdate = true
+
 		quotas = garage.NewApiBucketQuotas()
 		if val, ok := d.GetOk("max_size"); ok {
 			quotas.SetMaxSize(int64(val.(int)))
 		}
+
 		if val, ok := d.GetOk("max_objects"); ok {
 			quotas.SetMaxObjects(int64(val.(int)))
 		}
@@ -267,9 +293,11 @@ func resourceGarageBucketUpdate(ctx context.Context, d *schema.ResourceData, m i
 
 	// Handle website access changes
 	var websiteAccess *garage.UpdateBucketWebsiteAccess
+
 	if d.HasChanges("website_access_enabled", "website_access_index_document", "website_access_error_document") {
 		doUpdate = true
 		websiteAccessEnabled := d.Get("website_access_enabled").(bool)
+
 		websiteAccess = garage.NewUpdateBucketWebsiteAccess(websiteAccessEnabled)
 		if websiteAccessEnabled {
 			if val, ok := d.GetOk("website_access_index_document"); ok {
@@ -277,6 +305,7 @@ func resourceGarageBucketUpdate(ctx context.Context, d *schema.ResourceData, m i
 			} else {
 				websiteAccess.SetIndexDocument("index.html")
 			}
+
 			if val, ok := d.GetOk("website_access_error_document"); ok {
 				websiteAccess.SetErrorDocument(val.(string))
 			}
@@ -288,13 +317,16 @@ func resourceGarageBucketUpdate(ctx context.Context, d *schema.ResourceData, m i
 		if quotas != nil {
 			bucketUpdate.SetQuotas(*quotas)
 		}
+
 		if websiteAccess != nil {
 			bucketUpdate.SetWebsiteAccess(*websiteAccess)
 		}
+
 		_, resp, err := client.Client.BucketAPI.UpdateBucket(ctx).Id(bucketID).UpdateBucketRequestBody(*bucketUpdate).Execute()
 		if err != nil {
 			return diag.FromErr(fmt.Errorf("failed to update bucket: %w", err))
 		}
+
 		defer func() {
 			if resp != nil && resp.Body != nil {
 				_ = resp.Body.Close()
@@ -327,7 +359,7 @@ func resourceGarageBucketDelete(ctx context.Context, d *schema.ResourceData, m i
 	return nil
 }
 
-// S3 Lifecycle Configuration structures
+// LifecycleConfiguration represents an S3 bucket lifecycle configuration.
 type LifecycleConfiguration struct {
 	XMLName xml.Name `xml:"LifecycleConfiguration"`
 	Rules   []Rule   `xml:"Rule"`
@@ -393,7 +425,7 @@ func setBucketLifecyclePolicy(ctx context.Context, client *GarageClient, bucketI
 	}
 
 	// Create HTTP request
-	req, err := http.NewRequestWithContext(ctx, "PUT", s3URL, bytes.NewReader(xmlData))
+	req, err := http.NewRequestWithContext(ctx, http.MethodPut, s3URL, bytes.NewReader(xmlData))
 	if err != nil {
 		return fmt.Errorf("failed to create request: %w", err)
 	}
@@ -406,10 +438,12 @@ func setBucketLifecyclePolicy(ctx context.Context, client *GarageClient, bucketI
 
 	// Execute request
 	httpClient := &http.Client{}
+
 	resp, err = httpClient.Do(req)
 	if err != nil || resp == nil {
 		return fmt.Errorf("failed to execute request: %w", err)
 	}
+
 	defer func() {
 		if resp.Body != nil {
 			_ = resp.Body.Close()
@@ -449,7 +483,7 @@ func getBucketLifecyclePolicy(ctx context.Context, client *GarageClient, bucketI
 		bucketName)
 
 	// Create HTTP request
-	req, err := http.NewRequestWithContext(ctx, "GET", s3URL, nil)
+	req, err := http.NewRequestWithContext(ctx, http.MethodGet, s3URL, nil)
 	if err != nil {
 		return 0, fmt.Errorf("failed to create request: %w", err)
 	}
@@ -461,10 +495,12 @@ func getBucketLifecyclePolicy(ctx context.Context, client *GarageClient, bucketI
 
 	// Execute request
 	httpClient := &http.Client{}
+
 	resp, err = httpClient.Do(req)
 	if err != nil || resp == nil {
 		return 0, fmt.Errorf("failed to execute request: %w", err)
 	}
+
 	defer func() {
 		if resp.Body != nil {
 			_ = resp.Body.Close()
@@ -519,7 +555,7 @@ func deleteBucketLifecyclePolicy(ctx context.Context, client *GarageClient, buck
 		bucketName)
 
 	// Create HTTP request
-	req, err := http.NewRequestWithContext(ctx, "DELETE", s3URL, nil)
+	req, err := http.NewRequestWithContext(ctx, http.MethodDelete, s3URL, nil)
 	if err != nil {
 		return fmt.Errorf("failed to create request: %w", err)
 	}
@@ -531,10 +567,12 @@ func deleteBucketLifecyclePolicy(ctx context.Context, client *GarageClient, buck
 
 	// Execute request
 	httpClient := &http.Client{}
+
 	resp, err = httpClient.Do(req)
 	if err != nil {
 		return fmt.Errorf("failed to execute request: %w", err)
 	}
+
 	defer func() {
 		if resp.Body != nil {
 			_ = resp.Body.Close()
@@ -557,5 +595,6 @@ func replacePort(host string, newPort int) string {
 			return host[:i+1] + strconv.Itoa(newPort)
 		}
 	}
+
 	return host + ":" + strconv.Itoa(newPort)
 }

@@ -56,9 +56,11 @@ func resourceGarageKeyCreate(ctx context.Context, d *schema.ResourceData, m inte
 	}()
 
 	d.SetId(key.AccessKeyId)
+
 	if err := d.Set("access_key_id", key.AccessKeyId); err != nil {
 		return diag.FromErr(err)
 	}
+
 	if key.SecretAccessKey.IsSet() {
 		secret := key.SecretAccessKey.Get()
 		if secret != nil {
@@ -81,6 +83,7 @@ func resourceGarageKeyRead(ctx context.Context, d *schema.ResourceData, m interf
 			d.SetId("")
 			return nil
 		}
+
 		return diag.FromErr(fmt.Errorf("failed to read key: %w", err))
 	}
 	defer func() {
@@ -92,6 +95,7 @@ func resourceGarageKeyRead(ctx context.Context, d *schema.ResourceData, m interf
 	if err := d.Set("access_key_id", key.AccessKeyId); err != nil {
 		return diag.FromErr(err)
 	}
+
 	if err := d.Set("name", key.Name); err != nil {
 		return diag.FromErr(err)
 	}
@@ -108,8 +112,10 @@ func resourceGarageKeyUpdate(ctx context.Context, d *schema.ResourceData, m inte
 		if diags.HasError() {
 			return diags
 		}
+
 		return resourceGarageKeyCreate(ctx, d, m)
 	}
+
 	return nil
 }
 

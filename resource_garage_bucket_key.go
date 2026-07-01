@@ -28,9 +28,11 @@ func resourceGarageBucketKey() *schema.Resource {
 				if err := d.Set("bucket_id", parts[0]); err != nil {
 					return nil, err
 				}
+
 				if err := d.Set("access_key_id", parts[1]); err != nil {
 					return nil, err
 				}
+
 				d.SetId(fmt.Sprintf("%s/%s", parts[0], parts[1]))
 
 				return []*schema.ResourceData{d}, nil
@@ -110,6 +112,7 @@ func resourceGarageBucketKeyRead(ctx context.Context, d *schema.ResourceData, m 
 			d.SetId("")
 			return nil
 		}
+
 		return diag.FromErr(fmt.Errorf("failed to read key: %w", err))
 	}
 	defer func() {
@@ -126,22 +129,26 @@ func resourceGarageBucketKeyRead(ctx context.Context, d *schema.ResourceData, m 
 					return diag.FromErr(err)
 				}
 			}
+
 			if bucket.Permissions.Write != nil {
 				if err := d.Set("write", *bucket.Permissions.Write); err != nil {
 					return diag.FromErr(err)
 				}
 			}
+
 			if bucket.Permissions.Owner != nil {
 				if err := d.Set("owner", *bucket.Permissions.Owner); err != nil {
 					return diag.FromErr(err)
 				}
 			}
+
 			return nil
 		}
 	}
 
 	// Key doesn't have permissions on this bucket
 	d.SetId("")
+
 	return nil
 }
 
@@ -197,5 +204,6 @@ func resourceGarageBucketKeyDelete(ctx context.Context, d *schema.ResourceData, 
 	}()
 
 	d.SetId("")
+
 	return nil
 }
