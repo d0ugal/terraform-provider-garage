@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.2.23](https://github.com/d0ugal/terraform-provider-garage/compare/v0.2.22...v0.2.23) (2026-07-04)
+
+
+### Bug Fixes
+
+* update module github.com/apparentlymart/go-textseg/v15 to v17 ([8ed9832](https://github.com/d0ugal/terraform-provider-garage/commit/8ed9832a99b7741e46e2518127e035c92255ba3b))
+* update module github.com/apparentlymart/go-textseg/v17 to v17.0.1 ([f9581ed](https://github.com/d0ugal/terraform-provider-garage/commit/f9581ed98f22fe90ba6d016d1e8d2982922cff67))
+
 ## [0.2.22](https://github.com/d0ugal/terraform-provider-garage/compare/v0.2.21...v0.2.22) (2026-07-01)
 
 
