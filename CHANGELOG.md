@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.2.25](https://github.com/d0ugal/terraform-provider-garage/compare/v0.2.24...v0.2.25) (2026-07-07)
+
+
+### Bug Fixes
+
+* update go toolchain directive to v1.26.5 ([8c8598c](https://github.com/d0ugal/terraform-provider-garage/commit/8c8598cf45b2b371ca8c8a12271a6e12810d8a3c))
+
 ## [0.2.24](https://github.com/d0ugal/terraform-provider-garage/compare/v0.2.23...v0.2.24) (2026-07-07)
 
 
