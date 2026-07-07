@@ -1,5 +1,15 @@
 # Changelog
 
+## [0.2.24](https://github.com/d0ugal/terraform-provider-garage/compare/v0.2.23...v0.2.24) (2026-07-07)
+
+
+### Bug Fixes
+
+* update google.golang.org/genproto/googleapis/rpc digest to 84412db ([50843e5](https://github.com/d0ugal/terraform-provider-garage/commit/50843e53346576eab1400c741920d5f91dab3235))
+* update google.golang.org/genproto/googleapis/rpc digest to f0a9213 ([418bd62](https://github.com/d0ugal/terraform-provider-garage/commit/418bd623cfee9bcc724c79405b4636af54774d00))
+* update module github.com/zclconf/go-cty to v1.19.0 ([8fdaa1e](https://github.com/d0ugal/terraform-provider-garage/commit/8fdaa1ec77683cc386904af0e4042369c68887e6))
+* update module golang.org/x/text to v0.39.0 ([2eec636](https://github.com/d0ugal/terraform-provider-garage/commit/2eec6368a6274bead639d0a35747a19495424f38))
+
 ## [0.2.23](https://github.com/d0ugal/terraform-provider-garage/compare/v0.2.22...v0.2.23) (2026-07-04)
 
 
