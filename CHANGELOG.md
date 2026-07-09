@@ -1,5 +1,16 @@
 # Changelog
 
+## [0.2.26](https://github.com/d0ugal/terraform-provider-garage/compare/v0.2.25...v0.2.26) (2026-07-09)
+
+
+### Bug Fixes
+
+* update module golang.org/x/mod to v0.38.0 ([d472e96](https://github.com/d0ugal/terraform-provider-garage/commit/d472e961cbf000a1b8ac0a27aef8ca60bb664ec7))
+* update module golang.org/x/net to v0.57.0 ([0754b8f](https://github.com/d0ugal/terraform-provider-garage/commit/0754b8f45edd0cd723aa05540847dd374da07008))
+* update module golang.org/x/sync to v0.22.0 ([32aa4c3](https://github.com/d0ugal/terraform-provider-garage/commit/32aa4c352d4101ba64966e003de4b6b7a1080b1b))
+* update module golang.org/x/sys to v0.47.0 ([bd3f742](https://github.com/d0ugal/terraform-provider-garage/commit/bd3f742bc83cae0e7c1b17ab7761a468ab2c48d3))
+* update module golang.org/x/tools to v0.48.0 ([8dc3a90](https://github.com/d0ugal/terraform-provider-garage/commit/8dc3a90bd3dd2aee1ff984aa7bf9658eeed1beaf))
+
 ## [0.2.25](https://github.com/d0ugal/terraform-provider-garage/compare/v0.2.24...v0.2.25) (2026-07-07)
 
 
