@@ -1,5 +1,21 @@
 # Changelog
 
+## [0.2.29](https://github.com/d0ugal/terraform-provider-garage/compare/v0.2.28...v0.2.29) (2026-07-30)
+
+
+### Bug Fixes
+
+* update google.golang.org/genproto/googleapis/rpc digest to 0afa2a6 ([b07f153](https://github.com/d0ugal/terraform-provider-garage/commit/b07f153caf0d4af9ecdfbb606c2ec3d90619effe))
+* update google.golang.org/genproto/googleapis/rpc digest to 3fe39f3 ([#230](https://github.com/d0ugal/terraform-provider-garage/issues/230)) ([606e81d](https://github.com/d0ugal/terraform-provider-garage/commit/606e81d0b6e5e20590ba2362a3a21286800ec52a))
+* update google.golang.org/genproto/googleapis/rpc digest to 6c54ddd ([#232](https://github.com/d0ugal/terraform-provider-garage/issues/232)) ([bbfbe52](https://github.com/d0ugal/terraform-provider-garage/commit/bbfbe528ae9e4362dc3de3fa8834b67a33a49a44))
+* update google.golang.org/genproto/googleapis/rpc digest to 7274b71 ([#228](https://github.com/d0ugal/terraform-provider-garage/issues/228)) ([e3635ab](https://github.com/d0ugal/terraform-provider-garage/commit/e3635ab774411b38028e0fa0ccf32b0e18826faf))
+* update google.golang.org/genproto/googleapis/rpc digest to 8efbd57 ([#233](https://github.com/d0ugal/terraform-provider-garage/issues/233)) ([7ee2886](https://github.com/d0ugal/terraform-provider-garage/commit/7ee2886837c9e05881a3470de41c01b6b9a7a551))
+* update google.golang.org/genproto/googleapis/rpc digest to b2f2020 ([#231](https://github.com/d0ugal/terraform-provider-garage/issues/231)) ([3b324d3](https://github.com/d0ugal/terraform-provider-garage/commit/3b324d3638cbcfc97a18c94fd775612d6329be22))
+* update module github.com/hashicorp/terraform-registry-address to v0.5.0 ([#227](https://github.com/d0ugal/terraform-provider-garage/issues/227)) ([ac9e792](https://github.com/d0ugal/terraform-provider-garage/commit/ac9e7920aaf714332d756ecbf63b948e0b3ccb8d))
+* update module github.com/mattn/go-isatty to v0.0.23 ([a8fa489](https://github.com/d0ugal/terraform-provider-garage/commit/a8fa4893ab98b94321bcf26008683a6a4e0255c6))
+* update module github.com/mattn/go-isatty to v0.0.24 ([#229](https://github.com/d0ugal/terraform-provider-garage/issues/229)) ([cf73684](https://github.com/d0ugal/terraform-provider-garage/commit/cf73684262160eca13f9ecfbb11646cbf19f35f4))
+* update module google.golang.org/grpc to v1.83.0 ([#234](https://github.com/d0ugal/terraform-provider-garage/issues/234)) ([9409b02](https://github.com/d0ugal/terraform-provider-garage/commit/9409b027da37f6b50bdcad012cd5408a490559fb))
+
 ## [0.2.28](https://github.com/d0ugal/terraform-provider-garage/compare/v0.2.27...v0.2.28) (2026-07-16)
 
 
