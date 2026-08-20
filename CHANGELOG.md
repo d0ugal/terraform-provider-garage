@@ -1,5 +1,20 @@
 # Changelog
 
+## [0.2.31](https://github.com/d0ugal/terraform-provider-garage/compare/v0.2.30...v0.2.31) (2026-08-20)
+
+
+### Bug Fixes
+
+* update go toolchain directive to v1.26.6 ([#246](https://github.com/d0ugal/terraform-provider-garage/issues/246)) ([966ff00](https://github.com/d0ugal/terraform-provider-garage/commit/966ff00ecff70a439c3a66cc4d57a29b20a296a1))
+* update go toolchain directive to v1.26.7 ([#252](https://github.com/d0ugal/terraform-provider-garage/issues/252)) ([9bf3c72](https://github.com/d0ugal/terraform-provider-garage/commit/9bf3c722cae81f65d10dcc16813740179def6612))
+* update go toolchain directive to v1.27.0 ([#254](https://github.com/d0ugal/terraform-provider-garage/issues/254)) ([e07ffb9](https://github.com/d0ugal/terraform-provider-garage/commit/e07ffb9a1aa11e917006e0d22090ade44c50aa1d))
+* update google.golang.org/genproto/googleapis/rpc digest to 08b0e42 ([#253](https://github.com/d0ugal/terraform-provider-garage/issues/253)) ([eeecb28](https://github.com/d0ugal/terraform-provider-garage/commit/eeecb2892f8e476915469802d3c2e71420ede068))
+* update google.golang.org/genproto/googleapis/rpc digest to 1b09341 ([#250](https://github.com/d0ugal/terraform-provider-garage/issues/250)) ([a1a35f4](https://github.com/d0ugal/terraform-provider-garage/commit/a1a35f464320cf8dda486e4caba986d855126e93))
+* update google.golang.org/genproto/googleapis/rpc digest to ac3dfec ([#249](https://github.com/d0ugal/terraform-provider-garage/issues/249)) ([b2a2744](https://github.com/d0ugal/terraform-provider-garage/commit/b2a27446b360d3e6469b525c0a8ebab935ad6092))
+* update module golang.org/x/mod to v0.40.0 ([#247](https://github.com/d0ugal/terraform-provider-garage/issues/247)) ([861dcd8](https://github.com/d0ugal/terraform-provider-garage/commit/861dcd88e5ecfc8511526ea897f2ae1fcf9414a1))
+* update module golang.org/x/net to v0.58.0 ([#244](https://github.com/d0ugal/terraform-provider-garage/issues/244)) ([2a18a07](https://github.com/d0ugal/terraform-provider-garage/commit/2a18a07e86883b05e9a2d8219c09ec3cbab245ce))
+* update module google.golang.org/grpc to v1.83.1 ([#251](https://github.com/d0ugal/terraform-provider-garage/issues/251)) ([502d614](https://github.com/d0ugal/terraform-provider-garage/commit/502d614cf22a92889bdd63c74ae667d8fafc4534))
+
 ## [0.2.30](https://github.com/d0ugal/terraform-provider-garage/compare/v0.2.29...v0.2.30) (2026-08-12)
 
 
