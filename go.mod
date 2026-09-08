@@ -42,10 +42,10 @@ require (
 	github.com/vmihailenco/tagparser/v2 v2.0.0 // indirect
 	github.com/zclconf/go-cty v1.19.0 // indirect
 	golang.org/x/mod v0.41.0 // indirect
-	golang.org/x/net v0.58.0 // indirect
+	golang.org/x/net v0.59.0 // indirect
 	golang.org/x/sync v0.23.0 // indirect
 	golang.org/x/sys v0.48.0 // indirect
-	golang.org/x/text v0.41.0 // indirect
+	golang.org/x/text v0.42.0 // indirect
 	golang.org/x/tools v0.49.0 // indirect
 	google.golang.org/appengine v1.6.8 // indirect
 	google.golang.org/genproto/googleapis/rpc v0.0.0-20260908043556-f8649ddbbfe6 // indirect
