@@ -1,5 +1,16 @@
 # Changelog
 
+## [0.2.33](https://github.com/d0ugal/terraform-provider-garage/compare/v0.2.32...v0.2.33) (2026-09-21)
+
+
+### Bug Fixes
+
+* update google.golang.org/genproto/googleapis/rpc digest to b142276 ([#278](https://github.com/d0ugal/terraform-provider-garage/issues/278)) ([918c9b5](https://github.com/d0ugal/terraform-provider-garage/commit/918c9b5109a9e61af33d7c6d2c4f8b1f478fcc58))
+* update google.golang.org/genproto/googleapis/rpc digest to cecb647 ([#277](https://github.com/d0ugal/terraform-provider-garage/issues/277)) ([63e1f92](https://github.com/d0ugal/terraform-provider-garage/commit/63e1f921cf3f38ff6fbe673813b7ad4776d07af4))
+* update google.golang.org/genproto/googleapis/rpc digest to eeb232e ([#276](https://github.com/d0ugal/terraform-provider-garage/issues/276)) ([d7de1b2](https://github.com/d0ugal/terraform-provider-garage/commit/d7de1b24faa51ca74ce08856a74447df8c894a5b))
+* update module github.com/hashicorp/go-uuid to v1.0.4 ([#279](https://github.com/d0ugal/terraform-provider-garage/issues/279)) ([765ceb0](https://github.com/d0ugal/terraform-provider-garage/commit/765ceb0a692fcbe2a814cda2077f8281015547da))
+* update module github.com/hashicorp/hcl/v2 to v2.25.0 ([#272](https://github.com/d0ugal/terraform-provider-garage/issues/272)) ([399b6c4](https://github.com/d0ugal/terraform-provider-garage/commit/399b6c4ce11610d02a4b0c9807d8def08c64e795))
+
 ## [0.2.32](https://github.com/d0ugal/terraform-provider-garage/compare/v0.2.31...v0.2.32) (2026-09-12)
 
 
