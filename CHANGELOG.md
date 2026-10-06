@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.2.36](https://github.com/d0ugal/terraform-provider-garage/compare/v0.2.35...v0.2.36) (2026-10-06)
+
+
+### Bug Fixes
+
+* update module github.com/mattn/go-colorable to v0.1.16 ([#286](https://github.com/d0ugal/terraform-provider-garage/issues/286)) ([b55703c](https://github.com/d0ugal/terraform-provider-garage/commit/b55703c1fd8a1cf7b1ebc5749992db21380d3df5))
+
 ## [0.2.35](https://github.com/d0ugal/terraform-provider-garage/compare/v0.2.34...v0.2.35) (2026-10-05)
 
 
