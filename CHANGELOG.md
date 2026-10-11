@@ -1,5 +1,20 @@
 # Changelog
 
+## [0.2.36](https://github.com/d0ugal/terraform-provider-garage/compare/v0.2.35...v0.2.36) (2026-10-11)
+
+
+### Bug Fixes
+
+* update go toolchain directive to v1.27.2 ([#288](https://github.com/d0ugal/terraform-provider-garage/issues/288)) ([77a2ea9](https://github.com/d0ugal/terraform-provider-garage/commit/77a2ea9fcca61a4c721c36541ad39132cba6940a))
+* update module github.com/mattn/go-colorable to v0.1.16 ([#286](https://github.com/d0ugal/terraform-provider-garage/issues/286)) ([b55703c](https://github.com/d0ugal/terraform-provider-garage/commit/b55703c1fd8a1cf7b1ebc5749992db21380d3df5))
+* update module golang.org/x/mod to v0.42.0 ([#294](https://github.com/d0ugal/terraform-provider-garage/issues/294)) ([5dd33c9](https://github.com/d0ugal/terraform-provider-garage/commit/5dd33c9ab15fe3c723b96cd3ee78759e5aa61f94))
+* update module golang.org/x/net to v0.60.0 ([#289](https://github.com/d0ugal/terraform-provider-garage/issues/289)) ([25311a1](https://github.com/d0ugal/terraform-provider-garage/commit/25311a18ff0108d2d1a70ba76e3aab178aa8b217))
+* update module golang.org/x/net to v0.61.0 ([#295](https://github.com/d0ugal/terraform-provider-garage/issues/295)) ([d24ff9c](https://github.com/d0ugal/terraform-provider-garage/commit/d24ff9c0d9bb403e8418e481846f6e6b394e0c36))
+* update module golang.org/x/sync to v0.24.0 ([#291](https://github.com/d0ugal/terraform-provider-garage/issues/291)) ([8a1f4b6](https://github.com/d0ugal/terraform-provider-garage/commit/8a1f4b6cf72876cb4ed5f7bc3096ea4683c90461))
+* update module golang.org/x/sys to v0.49.0 ([#292](https://github.com/d0ugal/terraform-provider-garage/issues/292)) ([6e1ce4c](https://github.com/d0ugal/terraform-provider-garage/commit/6e1ce4c8ef3c801274c2bb76aae3a443e423bac6))
+* update module golang.org/x/text to v0.43.0 ([#293](https://github.com/d0ugal/terraform-provider-garage/issues/293)) ([0cc8b07](https://github.com/d0ugal/terraform-provider-garage/commit/0cc8b07ef161e60bd22ff49b9c8522daa2426de6))
+* update module golang.org/x/tools to v0.52.0 ([#296](https://github.com/d0ugal/terraform-provider-garage/issues/296)) ([2635b66](https://github.com/d0ugal/terraform-provider-garage/commit/2635b663f1389f805ec32123deebb2fa0d6a101b))
+
 ## [0.2.35](https://github.com/d0ugal/terraform-provider-garage/compare/v0.2.34...v0.2.35) (2026-10-05)
 
 
