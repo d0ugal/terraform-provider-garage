@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.2.37](https://github.com/d0ugal/terraform-provider-garage/compare/v0.2.36...v0.2.37) (2026-10-21)
+
+
+### Bug Fixes
+
+* update go toolchain directive to v1.27.3 ([#301](https://github.com/d0ugal/terraform-provider-garage/issues/301)) ([78905c0](https://github.com/d0ugal/terraform-provider-garage/commit/78905c0ba840d93303b5be8bdebf080f30b90f8a))
+* update google.golang.org/genproto/googleapis/rpc digest to ce908d2 ([#300](https://github.com/d0ugal/terraform-provider-garage/issues/300)) ([010e6ee](https://github.com/d0ugal/terraform-provider-garage/commit/010e6ee1803a73c15a898919d811a7d1075689d2))
+
 ## [0.2.36](https://github.com/d0ugal/terraform-provider-garage/compare/v0.2.35...v0.2.36) (2026-10-14)
 
 
