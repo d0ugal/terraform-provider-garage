@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.2.41](https://github.com/d0ugal/terraform-provider-garage/compare/v0.2.40...v0.2.41) (2026-11-06)
+
+
+### Bug Fixes
+
+* update module github.com/zclconf/go-cty to v1.20.0 ([#313](https://github.com/d0ugal/terraform-provider-garage/issues/313)) ([937bd7e](https://github.com/d0ugal/terraform-provider-garage/commit/937bd7e377bfe54fbfdc5ffaccd1024796013e84))
+
 ## [0.2.40](https://github.com/d0ugal/terraform-provider-garage/compare/v0.2.39...v0.2.40) (2026-11-05)
 
 
