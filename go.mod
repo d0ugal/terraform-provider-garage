@@ -6,7 +6,7 @@ toolchain go1.27.4
 
 require (
 	git.deuxfleurs.fr/garage-sdk/garage-admin-sdk-golang v0.0.0-20260423203333-1fad3da9c87b
-	github.com/hashicorp/terraform-plugin-sdk/v2 v2.40.1
+	github.com/hashicorp/terraform-plugin-sdk/v2 v2.41.1
 )
 
 require (
