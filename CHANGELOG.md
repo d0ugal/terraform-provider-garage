@@ -1,5 +1,15 @@
 # Changelog
 
+## [0.2.43](https://github.com/d0ugal/terraform-provider-garage/compare/v0.2.42...v0.2.43) (2026-11-19)
+
+
+### Bug Fixes
+
+* update google.golang.org/genproto/googleapis/rpc digest to c8830f6 ([#329](https://github.com/d0ugal/terraform-provider-garage/issues/329)) ([cc59622](https://github.com/d0ugal/terraform-provider-garage/commit/cc596227f7c37d2e659c532669381a41b8c34569))
+* update module github.com/hashicorp/terraform-plugin-sdk/v2 to v2.41.1 ([#328](https://github.com/d0ugal/terraform-provider-garage/issues/328)) ([979e97a](https://github.com/d0ugal/terraform-provider-garage/commit/979e97a4830c6a72eff0ed916fba2cda581231e2))
+* update module golang.org/x/net to v0.63.0 ([#325](https://github.com/d0ugal/terraform-provider-garage/issues/325)) ([435e325](https://github.com/d0ugal/terraform-provider-garage/commit/435e325712decf9db0e412063615dcfc5f2e56a5))
+* update module golang.org/x/tools to v0.53.0 ([#326](https://github.com/d0ugal/terraform-provider-garage/issues/326)) ([a9308c2](https://github.com/d0ugal/terraform-provider-garage/commit/a9308c21da90fb4d64d4dfedaf350d78d09625ae))
+
 ## [0.2.42](https://github.com/d0ugal/terraform-provider-garage/compare/v0.2.41...v0.2.42) (2026-11-17)
 
 
